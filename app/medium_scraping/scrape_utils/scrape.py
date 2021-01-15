@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup as bs
 from selenium import webdriver
 import time
 import json
+import os
 
 def get_article_info(article):
 
@@ -81,7 +82,9 @@ def get_top_n_articles(articles, n):
     
     return top_n_articles
 
-def scrape_articles(url, count, webdriver_path):
+def scrape_articles(url, count=0):
+
+    webdriver_path = os.path.dirname(__file__) + "/chromedriver"
 
     driver = initialize_webdriver(webdriver_path)
 
@@ -94,7 +97,8 @@ def scrape_articles(url, count, webdriver_path):
     for article in soup_articles:
         articles.append(get_article_info(article))
 
-    articles = get_top_n_articles(articles, count)
+    if count != 0:
+        articles = get_top_n_articles(articles, count)
 
     articles_json = json.dumps(articles, indent=4, sort_keys=True)
     print("Returns " + str(len(json.loads(articles_json))) + " articles")

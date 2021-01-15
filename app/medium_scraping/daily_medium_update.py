@@ -1,4 +1,4 @@
-from scrape_utils.scrape import scrape_articles
+from scrape_utils.scrape import scrape_articles, get_top_n_articles
 from datetime import datetime, timedelta
 import json
 from mail_handling.mail_handler import send_email, get_email_list
@@ -19,7 +19,7 @@ def generate_html_content(articles, topic):
 
         content += f'<li><h2><a href="{article_url}">{article_title}</a></h2>\
             <h4>The article is written by <a href="{author_url}">{article_author}</a>,\
-            got {article_claps} claps and has a reading time of {article_readtime} minutes.</h4></li>'
+            got {article_claps} {"claps" if article_claps != 1 else "clap"} and has a reading time of {article_readtime} {"minutes" if article_readtime != 1 else "minute"}.</h4></li>'
 
     
     content += "</ol>"
@@ -32,9 +32,8 @@ def generate_html_content(articles, topic):
     
     return email_html
 
-def main():
+def retired_main():
 
-    webdriver_path = "/home/sjyhne/projects/python/scraping/Medium-Post-Scraper/chromedriver"
     
     yesterday = datetime.now() - timedelta(1)
 
@@ -51,7 +50,7 @@ def main():
 
         scrape_url = "https://medium.com/tag/" + topic + "/archive/" + yesterday
 
-        articles = scrape_articles(scrape_url, n, webdriver_path)
+        articles = scrape_articles(scrape_url, webdriver_path, n)
 
         print(articles)
 
@@ -60,4 +59,26 @@ def main():
         send_email(email, email_html)
 
 
-main()
+def get_all_articles():
+
+    yesterday = datetime.now() - timedelta(1)
+
+    yesterday = datetime.strftime(yesterday, '%Y/%m/%d')
+
+    topic = "machine-learning"
+
+    scrape_url = "https://medium.com/tag/" + topic + "/archive/" + yesterday
+
+    return scrape_articles(scrape_url, count=2)
+
+all_articles = json.loads(get_all_articles())
+
+topic = "machine-learning"
+
+all_articles = get_top_n_articles(all_articles, len(all_articles))
+
+print(len(all_articles))
+print(type(all_articles))
+
+email_html = generate_html_content(all_articles, topic)
+send_email("sandsjyhne@gmail.com", email_html)

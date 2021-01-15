@@ -22,3 +22,5 @@ MACHINE LEARNING?
 ## CURRENTLY WORKING ON:
 
 Create a flask api for the service, maybe with a very SIMPLE webinterface.
+
+Streamlit???
