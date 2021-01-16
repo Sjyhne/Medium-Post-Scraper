@@ -131,3 +131,5 @@ dmypy.json
 # Selenium
 chromedriver
 .env_variables
+
+node_modules

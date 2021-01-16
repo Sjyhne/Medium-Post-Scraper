@@ -21,6 +21,5 @@ MACHINE LEARNING?
 
 ## CURRENTLY WORKING ON:
 
-Create a flask api for the service, maybe with a very SIMPLE webinterface.
+I've now decided to create a Flask and ReactJS application for the project, might be overkill, but I need to brush up on webdevelopment skills
 
-Streamlit???

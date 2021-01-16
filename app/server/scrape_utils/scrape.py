@@ -102,6 +102,5 @@ def scrape_articles(url, count=0):
 
     articles_json = json.dumps(articles, indent=4, sort_keys=True)
     print("Returns " + str(len(json.loads(articles_json))) + " articles")
-    print(articles_json)
 
     return articles_json

@@ -70,15 +70,3 @@ def get_all_articles():
     scrape_url = "https://medium.com/tag/" + topic + "/archive/" + yesterday
 
     return scrape_articles(scrape_url, count=2)
-
-all_articles = json.loads(get_all_articles())
-
-topic = "machine-learning"
-
-all_articles = get_top_n_articles(all_articles, len(all_articles))
-
-print(len(all_articles))
-print(type(all_articles))
-
-email_html = generate_html_content(all_articles, topic)
-send_email("sandsjyhne@gmail.com", email_html)
