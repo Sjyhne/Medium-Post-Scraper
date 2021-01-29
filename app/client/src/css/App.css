@@ -1,15 +1,5 @@
-.App {
-  text-align: left;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: white;
+  background-color: #F7F3F2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,15 +8,6 @@
   color: black;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-footer {
+  background-color: lightcoral;
 }

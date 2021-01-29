@@ -1,14 +1,20 @@
 import React from 'react';
 import Posts from "./Posts"
+import Navbar from "./Navbar"
+import Footer from "./Footer"
 import '../css/App.css';
+import { Container, Row, Col} from "react-bootstrap"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Let's go REACT</p>
-        <Posts />
-      </header>
+      <Navbar />
+      <Container>
+        <Row>
+          <Col><Posts /></Col>
+        </Row>
+      </Container>
+      <Footer />
     </div>
   );
 }
