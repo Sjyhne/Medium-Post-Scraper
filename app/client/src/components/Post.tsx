@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Col, Button, Table, ListGroup, ListGroupItem } from "react-bootstrap"
 import "../css/Post.css"
+import { HeartFill, Stopwatch } from "react-bootstrap-icons";
 
 interface PostProps {
     postData: {
@@ -18,20 +19,28 @@ function Post(postData: PostProps) {
 
   console.log(postData)
 
+  var articleClaps = postData.postData.article_claps.toString()
+
+  if (postData.postData.article_claps >= 1000) {
+      var tempClaps = Math.round(postData.postData.article_claps/1000 * 1000) / 1000
+      articleClaps = tempClaps.toString() + "K"
+  }
+
   return (
     <Card className="postCard bg-light">
         <Card.Body>
             <ListGroup className="list-group-flush">
+                <ListGroupItem className="bg-light custWrap" data-toggle="tooltip" title={postData.postData.article_title}>
+                    <div className="blackLink postTextTitle">{postData.postData.article_title}</div>
+                </ListGroupItem>
                 <ListGroupItem className="bg-light">
-                    <span className="blackLink postTextTitle">{postData.postData.article_title}</span>
-                    <hr></hr>
-                    <span className="blackLink postTextAuthor">{postData.postData.article_author}</span>
+                    <div className="blackLink postTextAuthor">{postData.postData.article_author}</div>
                 </ListGroupItem>
                     <Table className="postText">
                         <tbody>
                             <tr>
-                                <th>{postData.postData.article_claps} claps</th>
-                                <th>{postData.postData.article_readtime} minutes</th>
+                                <th>{articleClaps} <HeartFill size={14}/></th>
+                                <th>{postData.postData.article_readtime} <Stopwatch size={14}/></th>
                                 <th>{postData.postData.article_date.split("T")[0]}</th>
                             </tr>
                         </tbody>

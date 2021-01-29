@@ -1,23 +1,20 @@
 .postText {
-    font-size: 12px;
+    font-size: 11px;
     text-align: center;
 }
 
 .postTextTitle {
     font-size: 15px;
     text-align: center;
-    height: 35px;
     font-weight: bold;
-}
-
-.list-group-item {
-    background-color: pink;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .postTextAuthor {
     font-size: 13px;
     text-align: center;
-    height: 20px;
     font-weight: bold;
 }
 
@@ -32,7 +29,8 @@
     margin-top: 10px;
     text-align: center;
     width: 300px;
-    height: 260px;
+    height: 215px;
+    background-color: red;
 }
 
 hr {
@@ -41,4 +39,14 @@ hr {
     border: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-width: 20px;
+}
+
+  /* Show the tooltip text when you mouse over the tooltip container */
+.postTextTitle:hover .tooltiptext {
+    visibility: visible;
+}
+
+.custWrap {
+    white-space: pre-wrap;
+    width: 100%;
 }

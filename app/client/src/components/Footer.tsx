@@ -1,17 +1,14 @@
 import "../css/Footer.css"
 import { Table } from "react-bootstrap"
+import { Github } from "react-bootstrap-icons";
 
 
 function Footer() {
     return (
         <div className="footer">
-            <Table>
-                <tbody>
-                    <tr>
-                        <th className="text-center"><a href="https://github.com/sjyhne">GitHub</a></th>
-                    </tr>
-                </tbody>
-            </Table>
+            <div className="custContainer">
+                <a className="blackLink" href="https://google.com"><Github size={25} /></a>
+            </div>
         </div>
     )
 }

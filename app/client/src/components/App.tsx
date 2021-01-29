@@ -11,10 +11,12 @@ function App() {
       <Navbar />
       <Container>
         <Row>
+          <Col>Content inc...</Col>
+        </Row>
+        <Row>
           <Col><Posts /></Col>
         </Row>
       </Container>
-      <Footer />
     </div>
   );
 }
